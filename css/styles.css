@@ -242,12 +242,10 @@ p:last-child { margin-bottom: 0; }
 
 /* Ghost buttons sitting on the dark grounds */
 .hero .btn-ghost,
-.reviews-band .btn-ghost,
 .cta-final .btn-ghost,
 .service-hero .btn-ghost,
 .area-hero .btn-ghost { color: var(--white); border-color: var(--white); }
 .hero .btn-ghost:hover,
-.reviews-band .btn-ghost:hover,
 .cta-final .btn-ghost:hover,
 .service-hero .btn-ghost:hover,
 .area-hero .btn-ghost:hover { background: var(--white); color: var(--navy); border-color: var(--white); }
@@ -534,29 +532,6 @@ p:last-child { margin-bottom: 0; }
 .area-card-text h3 { margin-bottom: 4px; }
 .area-meta { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.08em; color: var(--steel); }
 
-/* === Reviews ============================================================= */
-
-.reviews-band { background: var(--navy); color: var(--white); }
-.reviews-band h2, .reviews-band h3 { color: var(--white); }
-.reviews-band .lede { color: rgba(255, 255, 255, 0.78); }
-.reviews-band .eyebrow { color: var(--amber); }
-
-.review-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; margin-bottom: 18px; }
-.review-card {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-left: 3px solid var(--amber);
-  border-radius: 2px;
-  padding: 26px;
-}
-.review-stars { color: var(--amber); letter-spacing: 0.18em; margin-bottom: 14px; font-size: 0.9rem; }
-.review-card blockquote { margin: 0 0 18px; font-size: 1.02rem; line-height: 1.6; color: var(--white); }
-.review-card cite { font-style: normal; font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.08em; color: rgba(255, 255, 255, 0.64); }
-.review-card cite strong { display: block; color: var(--amber); font-weight: 500; margin-bottom: 3px; }
-
-.reviews-widget-wrap { margin-top: 34px; background: var(--white); padding: 22px; border-radius: 2px; }
-.reviews-widget-wrap .lc_reviews_widget { min-height: 600px; }
-
 /* === Editorial split ===================================================== */
 
 .split { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: clamp(28px, 5vw, 68px); align-items: center; }
@@ -578,7 +553,6 @@ p:last-child { margin-bottom: 0; }
 .case-card:hover { transform: translateY(-4px); box-shadow: 0 16px 34px rgba(7, 30, 51, 0.14); }
 .case-card img { aspect-ratio: 3 / 2; object-fit: cover; width: 100%; }
 .case-card-body { padding: 22px; }
-.cat { display: block; font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--amber-deep); margin-bottom: 10px; }
 .case-card-body h3 { margin-bottom: 8px; }
 .case-card-body p { font-size: 0.92rem; color: var(--steel); margin: 0; }
 
@@ -669,9 +643,9 @@ p:last-child { margin-bottom: 0; }
 }
 .breadcrumbs a { color: rgba(255, 255, 255, 0.58); text-decoration: none; }
 .breadcrumbs a:hover { color: var(--amber); }
-.post-hero .breadcrumbs, .legal-content .breadcrumbs { color: var(--steel); }
-.post-hero .breadcrumbs a, .legal-content .breadcrumbs a { color: var(--steel); }
-.post-hero .breadcrumbs a:hover, .legal-content .breadcrumbs a:hover { color: var(--amber-deep); }
+.legal-content .breadcrumbs { color: var(--steel); }
+.legal-content .breadcrumbs a { color: var(--steel); }
+.legal-content .breadcrumbs a:hover { color: var(--amber-deep); }
 
 /* === Spec table ========================================================== */
 
@@ -714,14 +688,6 @@ p:last-child { margin-bottom: 0; }
 .col-side p { font-size: 0.92rem; color: var(--steel); }
 @media (max-width: 900px) { .col-side { position: static; } }
 
-.callout {
-  border-left: 3px solid var(--amber);
-  background: var(--surface);
-  padding: 20px 24px;
-  margin: 28px 0;
-  font-size: 0.98rem;
-}
-
 /* === FAQ ================================================================= */
 
 .faq { max-width: 82ch; }
@@ -748,31 +714,6 @@ p:last-child { margin-bottom: 0; }
 .answer { padding-bottom: 24px; }
 .answer p { color: var(--steel); font-size: 0.97rem; margin-bottom: 0.8em; }
 .answer a { color: var(--amber-deep); }
-
-/* === Blog ================================================================ */
-
-.blog-grid { display: grid; gap: clamp(16px, 2vw, 24px); grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
-.blog-card { background: var(--white); border: 1px solid var(--hair); border-radius: 2px; padding: 26px; text-decoration: none; display: flex; flex-direction: column; transition: transform 220ms ease, box-shadow 220ms ease; }
-.blog-card:hover { transform: translateY(-4px); box-shadow: 0 16px 34px rgba(7, 30, 51, 0.14); }
-.post-meta { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber-deep); margin-bottom: 14px; }
-.blog-card h3 { margin-bottom: 10px; }
-.blog-card p { font-size: 0.94rem; color: var(--steel); margin-bottom: 20px; }
-.read-more { margin-top: auto; font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy); }
-
-.post-hero { background: var(--surface); padding: clamp(40px, 6vw, 76px) 0 0; }
-.post-hero h1 { font-size: clamp(2rem, 4.4vw, 3.2rem); text-transform: none; letter-spacing: -0.025em; max-width: 20ch; }
-.post-hero-img { margin-top: 40px; }
-.post-hero-img img { width: 100%; aspect-ratio: 21 / 9; object-fit: cover; }
-.post-body { max-width: 74ch; margin: 0 auto; }
-.post-body h2 { margin-top: 1.8em; }
-.post-body p, .post-body li { color: var(--steel); }
-.post-body ul, .post-body ol { padding-left: 1.15em; }
-.post-body li { margin-bottom: 0.5em; }
-.post-body strong { color: var(--ink); font-weight: 600; }
-.post-body a { color: var(--amber-deep); }
-.post-end { border-top: 1px solid var(--hair); margin-top: 44px; padding-top: 26px; }
-.author { font-family: var(--font-mono); font-size: 0.8rem; color: var(--steel); }
-.author strong { display: block; color: var(--navy); font-weight: 500; margin-bottom: 4px; }
 
 .related { display: grid; gap: clamp(16px, 2vw, 24px); grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
 .related a {
@@ -929,6 +870,6 @@ p:last-child { margin-bottom: 0; }
   font-family: var(--font-mono);
   font-size: 0.92em;
 }
-.footer .todo, .header .todo, .cta-final .todo, .area-hero .todo, .reviews-band .todo {
+.footer .todo, .header .todo, .cta-final .todo, .area-hero .todo {
   background: rgba(232, 160, 32, 0.26); color: var(--amber); border-bottom-color: var(--amber);
 }
