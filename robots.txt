@@ -3,4 +3,4 @@ Allow: /
 Disallow: /privacy.html
 Disallow: /terms.html
 
-Sitemap: https://apexconstruction.co.uk/sitemap.xml
+Sitemap: https://apexconstruction.site/sitemap.xml
