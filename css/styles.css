@@ -757,6 +757,20 @@ p:last-child { margin-bottom: 0; }
 .form-check { display: flex; align-items: flex-start; gap: 11px; font-size: 0.86rem; color: var(--steel); margin-bottom: 22px; }
 .form-check input { width: 20px; height: 20px; margin-top: 2px; flex-shrink: 0; accent-color: var(--navy); }
 
+/* Honeypot — off-screen rather than display:none, which some bots skip */
+.form-trap { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+.form-status {
+  margin-top: 16px; padding: 14px 16px;
+  border-left: 3px solid var(--navy);
+  background: var(--surface);
+  font-size: 0.92rem; line-height: 1.5; color: var(--ink);
+}
+.form-status[hidden] { display: none; }
+.form-status.ok { border-left-color: var(--amber); }
+.form-status.error { border-left-color: var(--amber-deep); color: var(--amber-deep); }
+.contact-form button[disabled] { opacity: 0.6; cursor: progress; }
+
 .contact-info { display: grid; gap: 20px; }
 .big-tel {
   display: block;

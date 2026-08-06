@@ -130,6 +130,64 @@
     });
   });
 
+  // === Contact form → /api/contact → GoHighLevel ===
+  const enquiryForm = document.getElementById('enquiry');
+  if (enquiryForm) {
+    const statusEl = document.getElementById('form-status');
+    const submitBtn = enquiryForm.querySelector('button[type="submit"]');
+    const submitLabel = submitBtn ? submitBtn.innerHTML : '';
+
+    const SENT = 'Thanks — that\'s with us. We\'ll be in touch within one working day.';
+    const FAILED = 'Sorry, that didn\'t send. Please call 07588 539871 or email apexconstructionsouth@gmail.com.';
+
+    const setStatus = (state, text) => {
+      if (!statusEl) return;
+      statusEl.className = `form-status ${state}`;
+      statusEl.textContent = text;
+      statusEl.hidden = false;
+    };
+
+    // Without JS the form posts normally and comes back as a redirect.
+    const outcome = new URLSearchParams(window.location.search).get('enquiry');
+    if (outcome === 'sent') setStatus('ok', SENT);
+    if (outcome === 'error') setStatus('error', FAILED);
+
+    enquiryForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!enquiryForm.reportValidity()) return;
+
+      const payload = Object.fromEntries(new FormData(enquiryForm).entries());
+      payload.page = window.location.pathname;
+      payload.referrer = document.referrer || '';
+
+      // Carry any campaign tagging through to the note.
+      const params = new URLSearchParams(window.location.search);
+      const campaign = [...params].filter(([k]) => /^(utm_|gclid|fbclid)/i.test(k))
+        .map(([k, v]) => `${k}=${v}`).join(' · ');
+      if (campaign) payload.campaign = campaign;
+
+      if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending…'; }
+      if (statusEl) statusEl.hidden = true;
+
+      try {
+        const res = await fetch(enquiryForm.getAttribute('action'), {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok || !data.ok) throw new Error(data.error || FAILED);
+
+        enquiryForm.reset();
+        setStatus('ok', SENT);
+      } catch (err) {
+        setStatus('error', err.message || FAILED);
+      } finally {
+        if (submitBtn) { submitBtn.disabled = false; submitBtn.innerHTML = submitLabel; }
+      }
+    });
+  }
+
   // === Header lift on scroll ===
   const header = document.querySelector('.header');
   if (header) {

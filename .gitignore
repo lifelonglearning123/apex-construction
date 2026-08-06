@@ -1,0 +1,11 @@
+# Secrets — the GHL token lives here. Never commit.
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# Vercel
+.vercel
+
+node_modules/
+.DS_Store

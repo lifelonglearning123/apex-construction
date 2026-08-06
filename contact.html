@@ -67,7 +67,7 @@
       <div class="area-hero-card">
         <strong>Quickest reply</strong>
         Call <a href="tel:+447588539871" style="color:var(--paper); text-decoration:underline;">07588 539871</a> in office hours.<br><br>
-        Outside hours, the form goes straight to the office inbox — we reply within one working day.
+        Outside hours, the form logs your enquiry with the office — we reply within one working day.
       </div>
     </div>
   </div>
@@ -116,7 +116,7 @@
         </p>
       </div>
 
-      <form class="contact-form" action="mailto:apexconstructionsouth@gmail.com" method="post" enctype="text/plain">
+      <form class="contact-form" id="enquiry" action="/api/contact" method="post">
         <span class="eyebrow">Free Site Visit</span>
         <h2 style="margin-top:14px;">Tell us about your project.</h2>
         <p style="font-size: 0.95rem; color: var(--muted); margin-bottom: 28px;">We'll come out, measure up and put a fixed-price quote in writing. No charge, no pressure.</p>
@@ -152,13 +152,20 @@
           </div>
         </div>
         <label class="form-check">
-          <input type="checkbox" required>
+          <input type="checkbox" id="consent" name="consent" value="yes" required>
           <span>I'm happy for Apex to contact me about my enquiry. Read our <a href="/privacy.html" style="color:var(--red);">privacy policy</a>.</span>
         </label>
+
+        <!-- Honeypot. Hidden from people, filled in by bots. -->
+        <div class="form-trap" aria-hidden="true">
+          <label for="company">Company</label>
+          <input id="company" name="company" type="text" tabindex="-1" autocomplete="off">
+        </div>
+
         <button type="submit" class="btn btn-red" style="width:100%; justify-content:center;">Send Enquiry <span class="arrow">→</span></button>
+        <p class="form-status" id="form-status" role="status" aria-live="polite" hidden></p>
         <p style="font-size:0.78rem; color:var(--muted); margin-top:14px; font-family: var(--font-mono); letter-spacing: 0.05em;">
-          <!-- TODO: Replace mailto fallback with GHL form endpoint when ready -->
-          Form submits via your email client. Prefer instant? Call <a href="/contact.html" style="color:var(--red);">07588 539871</a>.
+          We reply within one working day. Prefer instant? Call <a href="tel:+447588539871" style="color:var(--red);">07588 539871</a>.
         </p>
       </form>
     </div>
